@@ -1,13 +1,18 @@
-function lengthOfLongestSubstring(s) {
-  const map = new Map();
-  let maxLength = 0;
-  let left = 0;
-  for (let right = 0; right < s.length; right++) {
-    if (map.has(s[right])) {
-      left = Math.max(left, map.get(s[right]) + 1);
+function detectCycle(head) {
+  let slow = head;
+  let fast = head;
+  while (fast && fast.next) {
+    slow = slow.next;
+    fast = fast.next.next;
+    if (slow === fast) {
+      let p1 = head;
+      let p2 = slow;
+      while (p1 !== p2) {
+        p1 = p1.next;
+        p2 = p2.next;
+      }
+      return p1;
     }
-    map.set(s[right], right);
-    maxLength = Math.max(maxLength, right - left + 1);
   }
-  return maxLength;
+  return null;
 }
