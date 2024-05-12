@@ -1,4 +1,6 @@
-const intersection = (a, b) => {
-  const s = new Set(b);
-  return a.filter((x) => s.has(x));
+const gcdRecursive = (a, b) => {
+  if (b === 0) {
+    return a;
+  }
+  return gcdRecursive(b, a % b);
 };
