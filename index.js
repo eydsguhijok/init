@@ -1,6 +1,1 @@
-const gcdRecursive = (a, b) => {
-  if (b === 0) {
-    return a;
-  }
-  return gcdRecursive(b, a % b);
-};
+const minN = (arr, n = 1) => [...arr].sort((a, b) => a - b).slice(0, n);
